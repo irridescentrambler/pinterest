@@ -36,11 +36,9 @@ class BoardsController < ApplicationController
     @board.user = current_user
     respond_to do |format|
       if @board.save
-        format.html { redirect_to @board, notice: 'Board was successfully created.' }
-        format.json { render json: @board, status: :created }
+        format.json { render json: { boards: current_user.boards, message: "Successfully created the board" }, status: :created }
       else
-        format.html { render :new }
-        format.json { render json: @board.errors, status: :unprocessable_entity }
+        format.json { render json: { message: @board.errors.full_messages }, status: :unprocessable_entity }
       end
     end
   end
