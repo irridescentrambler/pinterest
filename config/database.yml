@@ -1,18 +1,19 @@
 defaults: &defaults
   adapter: postgresql
-  username: neosoft
-  password: ac3r
+  username: ENV['USERNAME']
+  password: ENV['PASSWORD']
   encoding: unicode
   pool: 5
-  host: localhost
+  host: ENV['DATABASE_URL']
+  port: ENV['PORT']
 
 development:
   <<: *defaults
-  database: pinterest_development
+  database: ENV['DATABASE']
 test: &test
   <<: *defaults
-  database: pinterest_test
+  database: ENV['DATABASE']
 
 production:
   <<: *defaults
-  database: pinterest_production
+  database: ENV['DATABASE']
