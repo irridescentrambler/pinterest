@@ -19,3 +19,5 @@
 /react/bundle.js
 /public/uploads
 /vendor
+# Ignore application configuration
+/config/application.yml
