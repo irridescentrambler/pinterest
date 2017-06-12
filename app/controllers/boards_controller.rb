@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = current_user.boards.all
+    @boards = current_user.boards.order(id: :desc)
     respond_to do |format|
       format.json { render json: @boards, status: :ok }
     end
