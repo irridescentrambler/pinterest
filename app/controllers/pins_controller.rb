@@ -1,6 +1,5 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [ :edit, :update, :destroy, :like, :dislike]
-  before_action :set_pin_from_slug, only: [:show]
+  before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :dislike]
   before_action :authenticate_user!
   # GET /pins
   # GET /pins.json
@@ -88,9 +87,9 @@ class PinsController < ApplicationController
   end
 
   private
-    def set_pin_from_slug
-      @pin = Pin.find( $redis.get(params[:id]) )
-    end
+    #def set_pin_from_slug
+    #  @pin = Pin.find( $redis.get(params[:id]) )
+    #end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
